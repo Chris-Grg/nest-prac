@@ -10,8 +10,8 @@ export class ProductsController {
     async addProduct(@Body() productsDto: productsDto
     ):Promise<{}>{
     const {title, description, price}= productsDto
-    const generatedId= this.productsService.insertProduct(title, description, price)
-    return {id: generatedId}
+    const productTitle= await this.productsService.insertProduct(title, description, price)
+    return ` ${productTitle} created`
     }
 
     @Get()
